@@ -21,6 +21,7 @@ class MainViewModel : ViewModel() {
 
     companion object {
         private const val TAG = "MainViewModel"
+        // Manually input the value's key
         private const val USRQuery = "arif"
     }
 
