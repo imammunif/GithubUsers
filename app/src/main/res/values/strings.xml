@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GithubUsers</string>
+    <string name="user_name">Username</string>
+    <string name="content_desc_profile_pic">User profile picture</string>
 </resources>
