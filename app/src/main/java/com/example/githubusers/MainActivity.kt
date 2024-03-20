@@ -16,14 +16,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
+        super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         supportActionBar?.hide()
 
-        val mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        val mainViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(MainViewModel::class.java)
 
         mainViewModel.listGithubUser.observe(this) { githubUser ->
             setGithubUserData(githubUser)
@@ -37,6 +39,10 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.isLoading.observe(this) {
             showLoading(it)
+        }
+
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
         }
     }
 
