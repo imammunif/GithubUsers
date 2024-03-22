@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubusers.data.response.ItemsItem
 import com.example.githubusers.databinding.ActivityMainBinding
-import com.example.githubusers.ui.detail.DetailUserActivity
-import com.example.githubusers.ui.GithubuserAdapter
+import com.example.githubusers.ui.detail.DetailActivity
+import com.example.githubusers.ui.UserAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,11 +54,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setGithubUserData(githubUser: List<ItemsItem>) {
-        val adapter = GithubuserAdapter()
+        val adapter = UserAdapter()
 
-        adapter.setOnItemClickListener(object : GithubuserAdapter.OnItemClickListener {
+        adapter.setOnItemClickListener(object : UserAdapter.OnItemClickListener {
             override fun onItemClick(user: ItemsItem) {
-                val intent = Intent(this@MainActivity, DetailUserActivity::class.java)
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
                 intent.putExtra("avatar_url", user.avatarUrl)
                 intent.putExtra("username", user.login)
                 startActivity(intent)

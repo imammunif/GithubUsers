@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.githubusers.data.response.ItemsItem
 import com.example.githubusers.databinding.ItemUserBinding
 
-class GithubuserAdapter : ListAdapter<ItemsItem, GithubuserAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class UserAdapter : ListAdapter<ItemsItem, UserAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     private var itemClickListener: OnItemClickListener? = null
 
