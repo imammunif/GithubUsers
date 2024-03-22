@@ -12,6 +12,8 @@ import com.example.githubusers.databinding.ItemUserBinding
 
 class GithubuserAdapter : ListAdapter<ItemsItem, GithubuserAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
+    private var itemClickListener: OnItemClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
@@ -22,7 +24,12 @@ class GithubuserAdapter : ListAdapter<ItemsItem, GithubuserAdapter.MyViewHolder>
         holder.bind(user)
     }
 
-    class MyViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
+    }
+
+
+    inner class MyViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: ItemsItem?) {
             if (user != null) {
                 binding.tvItemName.text = user.login
@@ -30,8 +37,13 @@ class GithubuserAdapter : ListAdapter<ItemsItem, GithubuserAdapter.MyViewHolder>
                     .load(user.avatarUrl)
                     .apply(RequestOptions.circleCropTransform())
                     .into(binding.imgItemAvatar)
+
+                binding.root.setOnClickListener {
+                    itemClickListener?.onItemClick(user)
+                }
             }
         }
+
     }
 
     companion object {
@@ -44,5 +56,9 @@ class GithubuserAdapter : ListAdapter<ItemsItem, GithubuserAdapter.MyViewHolder>
                 return oldItem == newItem
             }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(user: ItemsItem)
     }
 }

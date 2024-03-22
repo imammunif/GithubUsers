@@ -1,4 +1,4 @@
-package com.example.githubusers.ui
+package com.example.githubusers.ui.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData

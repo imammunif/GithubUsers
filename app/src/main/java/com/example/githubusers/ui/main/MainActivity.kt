@@ -1,5 +1,6 @@
-package com.example.githubusers
+package com.example.githubusers.ui.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,13 +10,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubusers.data.response.ItemsItem
 import com.example.githubusers.databinding.ActivityMainBinding
+import com.example.githubusers.ui.detail.DetailUserActivity
 import com.example.githubusers.ui.GithubuserAdapter
-import com.example.githubusers.ui.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel by lazy { ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)}
+    private val mainViewModel by lazy { ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+        MainViewModel::class.java)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun setGithubUserData(githubUser: List<ItemsItem>) {
         val adapter = GithubuserAdapter()
+
+        adapter.setOnItemClickListener(object : GithubuserAdapter.OnItemClickListener {
+            override fun onItemClick(user: ItemsItem) {
+                val intent = Intent(this@MainActivity, DetailUserActivity::class.java)
+                intent.putExtra("avatar_url", user.avatarUrl)
+                intent.putExtra("username", user.login)
+                startActivity(intent)
+            }
+        })
+
+
         adapter.submitList(githubUser)
         binding.rvUsers.adapter = adapter
     }

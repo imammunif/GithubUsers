@@ -3,4 +3,8 @@
     <string name="user_name">Username</string>
     <string name="content_desc_profile_pic">User profile picture</string>
     <string name="searchbar_hint">Search user here</string>
+    <string name="full_nama">Full name</string>
+    <string name="followers">%s followers</string>
+    <string name="following">%s following</string>
+    <string name="nav_tab_desc">Navigation tab desc</string>
 </resources>
