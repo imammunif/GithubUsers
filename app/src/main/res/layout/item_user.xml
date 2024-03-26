@@ -12,18 +12,21 @@
     android:layout_marginTop="4dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
-    android:padding="8dp">
+    android:padding="8dp"
+    >
     
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_item_avatar"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:contentDescription="@string/content_desc_profile_pic"
         android:scaleType="centerCrop"
+        card_view:civ_border_color="#808080"
+        card_view:civ_border_width="0.3dp"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars"
-        android:contentDescription="@string/content_desc_profile_pic"
         />
     
     <TextView
@@ -43,5 +46,5 @@
         card_view:layout_constraintVertical_bias="0.488"
         tools:text="@string/user_name"
         />
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>

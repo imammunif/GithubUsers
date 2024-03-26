@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.githubusers.data.response.ItemsItem
 import com.example.githubusers.databinding.ItemUserBinding
 
-class UserAdapter : ListAdapter<ItemsItem, UserAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class UserAdapter(emptyList: List<Any>) : ListAdapter<ItemsItem, UserAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     private var itemClickListener: OnItemClickListener? = null
 
@@ -28,7 +28,6 @@ class UserAdapter : ListAdapter<ItemsItem, UserAdapter.MyViewHolder>(DIFF_CALLBA
         itemClickListener = listener
     }
 
-
     inner class MyViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: ItemsItem?) {
             if (user != null) {
@@ -43,7 +42,6 @@ class UserAdapter : ListAdapter<ItemsItem, UserAdapter.MyViewHolder>(DIFF_CALLBA
                 }
             }
         }
-
     }
 
     companion object {

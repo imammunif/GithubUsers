@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setGithubUserData(githubUser: List<ItemsItem>) {
-        val adapter = UserAdapter()
+        val adapter = UserAdapter(emptyList())
 
         adapter.setOnItemClickListener(object : UserAdapter.OnItemClickListener {
             override fun onItemClick(user: ItemsItem) {
@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-
 
         adapter.submitList(githubUser)
         binding.rvUsers.adapter = adapter
